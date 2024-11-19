@@ -6,24 +6,36 @@ from django.contrib.auth.models import User
 class Genre(models.Model):
     name = models.CharField(max_length=80)
     
+    def __str__(self):
+        return self.name
+    
 class Person(models.Model):
     name = models.CharField(max_length=128)
+    
+    def __str__(self):
+        return self.name
+
 
 class Job(models.Model):
     name = models.CharField(max_length=128)
     
+    def __str__(self):
+        return self.name
+    
 class Movie(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=80)
     overview = models.TextField()
     release_date = models.DateField()
     running_time = models.IntegerField()
-    budget = models.IntegerField(blank=True)
-    tmdb_id = models.IntegerField(blank=True)
-    revenue = models.IntegerField(blank=True)
-    poster_path = models.URLField(blank=True)
+    budget = models.IntegerField(blank=True, null=True)
+    tmdb_id = models.IntegerField(blank=True, null=True)
+    revenue = models.IntegerField(blank=True, null=True)
+    poster_path = models.URLField(blank=True, null=True)
     genres = models.ManyToManyField(Genre)
     credits = models.ManyToManyField(Person, through='MovieCredit')
-    
+    def __str__(self):
+        return f'{self.title} {self.release_date}'
+
 class MovieCredit(models.Model):
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)

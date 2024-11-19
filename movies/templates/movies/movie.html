@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Página de Ejemplo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+    <header class="page-header">
+        <h1 class="font-bold">My Movies</h1>
+    </header>
+    
+    <article>
+        <div class="top-movie">
+            <img class="poster" src="{{ movie.poster_path }}" alt="the imitation game poster">
+            <header>
+            <h1 class="movie-title"> {{ movie.title }} </h1>
+            <div class="movie-info">
+                <p>  {{ movie.release_date }} </p> 
+                <ul class="movie-genre"> 
+                 {% for g in movie.genres.all %}
+                    <li> {{ g.name }} | </li>
+                 {% endfor %}    
+                </ul>
+                <p>- 1h 53m</p>  
+            </div>         
+            
+            <h1>Overview</h1>
+            <p>{{ movie.overview }}</p>
+
+            <details>
+                <summary>Production Details</summary>
+                <p> Budget: $14,000,000.00 </p>
+                <p> Revenue: $233,555,708.00</p>
+            </details>
+            </header>
+        </div>
+
+        <h1>Top Billed Cast</h1>
+        <div class="flex bg-green-200 overflow-x-auto"> 
+            <div class="h-[300px] border border-solid border-slate-200  drop-shadow-md rounded-b-lg flex-none"> 
+                <img class="h-[225px] w-[150px]" src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/fBEucxECxGLKVHBznO0qHtCGiMO.jpg" alt="Benedict Cumberbatch photo">
+                <h1> Benedict Cumberbatch</h1>
+            </div>
+          <div class="h-[300px] border border-solid border-slate-200  drop-shadow-md rounded-b-lg flex-none"> 
+                <img class="h-[225px] w-[150px] rounded-t-lg" src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/bRC1B2VwV0wK3ElciFAK6QZf2wD.jpg" alt="Keira Knightley photo">
+                <h1 class="pl-2 font-bold"> Keira Knightley</h1>
+            </div>
+          <div class="h-[300px] border border-solid border-slate-200  drop-shadow-md rounded-b-lg flex-none"> 
+                <img class="h-[225px] w-[150px] rounded-t-lg" src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/bRC1B2VwV0wK3ElciFAK6QZf2wD.jpg" alt="Keira Knightley photo">
+                <h1 class="pl-2 font-bold"> Keira Knightley</h1>
+            </div>
+          <div class="h-[300px] border border-solid border-slate-200  drop-shadow-md rounded-b-lg flex-none"> 
+                <img class="h-[225px] w-[150px] rounded-t-lg" src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/bRC1B2VwV0wK3ElciFAK6QZf2wD.jpg" alt="Keira Knightley photo">
+                <h1 class="pl-2 font-bold"> Keira Knightley</h1>
+            </div>
+          <div class="h-[300px] border border-solid border-slate-200  drop-shadow-md rounded-b-lg flex-none"> 
+                <img class="h-[225px] w-[150px] rounded-t-lg" src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/bRC1B2VwV0wK3ElciFAK6QZf2wD.jpg" alt="Keira Knightley photo">
+                <h1 class="pl-2 font-bold"> Keira Knightley</h1>
+            </div>
+           <div class="h-[300px] border border-solid border-slate-200  drop-shadow-md rounded-b-lg flex-none"> 
+                <img class="h-[225px] w-[150px] rounded-t-lg" src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/bRC1B2VwV0wK3ElciFAK6QZf2wD.jpg" alt="Keira Knightley photo">
+                <h1 class="pl-2 font-bold"> Keira Knightley</h1>
+            </div>
+            <div class="h-[300px] border border-solid border-slate-200  drop-shadow-md rounded-b-lg flex-none"> 
+                <img class="h-[225px] w-[150px] rounded-t-lg" src="https://media.themoviedb.org/t/p/w300_and_h450_bestv2/bRC1B2VwV0wK3ElciFAK6QZf2wD.jpg" alt="Keira Knightley photo">
+                <h1 class="pl-2 font-bold"> Keira Knightley</h1>
+            </div>
+        </div>
+    </article>
+
+    <footer>
+        <p> Proyecto de ejemplo de la materia Programación Web</p>
+        <p><a href="github.com\miusuario\elrepo"> GitHub Repository</a></p>
+    </footer>
+
+    </body>
+</html>
