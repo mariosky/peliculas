@@ -32,7 +32,8 @@
               {% endif %}
               {%endfor%}  </p>
           <div class="flex mt-2">
-            <a class="pl-5 text-blue-600 text-sm" href="#">reviews</a> 
+            <a class="pl-5 text-blue-600 text-sm"   
+             hx-get="/movies/movie_review/add/{{movie.id}}" hx-target="body" hx-swap="beforeend"  href="#">reviews</a> 
             <a class="pl-5 text-red-600 text-sm" href="#">like</a> 
           </div> 
             
@@ -46,8 +47,8 @@
               </p> 
             </div>
             
-            <div class="flex flex-col w-2/3 ml-16 mt-8 mb-8">
-  <form action="/movies/review/{{movie.id}}" method="post">
+  <div class="flex flex-col w-2/3 ml-16 mt-8 mb-8">
+   <form action="/movies/review/{{movie.id}}" method="post">
     {% csrf_token %} {{ review_form }}
 
     <div class="mt-6 flex items-center justify-end gap-x-6">
