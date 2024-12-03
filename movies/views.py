@@ -14,6 +14,10 @@ def movie(request, movie_id):
     review_form = MovieReviewForm()
     context = { 'movie':movie, 'saludo':'welcome', 'review_form':review_form }
     return render(request,'movies/movie.html', context=context )
+
+def movie_reviews(request, movie_id):
+    movie = Movie.objects.get(id=movie_id)
+    return render(request,'movies/reviews.html', context={'movie':movie } )
     
 def add_review(request, movie_id):
     form = None
@@ -22,10 +26,12 @@ def add_review(request, movie_id):
         form = MovieReviewForm(request.POST)
         if form.is_valid():
             rating = form.cleaned_data['rating']
+            title  = form.cleaned_data['title']
             review = form.cleaned_data['review']
             movie_review = MovieReview(
                     movie=movie,
                     rating=rating,
+                    title=title,
                     review=review,
                     user=request.user)
             movie_review.save()

@@ -50,3 +50,4 @@ class MovieReview(models.Model):
     rating = models.PositiveSmallIntegerField(validators=[MinValueValidator(1),
                                                           MaxValueValidator(100)])
     review = models.TextField(blank=True)
+    title  = models.TextField(blank=False, null=False, default="Reseña sin titulo")
