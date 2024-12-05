@@ -32,8 +32,10 @@
               {% endif %}
               {%endfor%}  </p>
               <div class="flex mt-2">
+                {% if user.is_authenticated %}
                 <a class="pl-5 text-blue-600 text-sm"   
                  hx-get="/movies/movie_review/add/{{movie.id}}" hx-target="body" hx-swap="beforeend"  href="#">reviews</a> 
+                 {% endif %}
                 <a class="pl-5 text-red-600 text-sm" href="#">like</a> 
               </div> 
             
