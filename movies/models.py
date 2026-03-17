@@ -20,10 +20,11 @@ class Person(models.Model):
 
 class Job(models.Model):
     name = models.CharField(max_length=128)
-    
+
     def __str__(self):
         return self.name
-    
+
+
 class Movie(models.Model):
     title = models.CharField(max_length=80)
     overview = models.TextField()
@@ -35,8 +36,10 @@ class Movie(models.Model):
     poster_path = models.URLField(blank=True, null=True)
     genres = models.ManyToManyField(Genre)
     credits = models.ManyToManyField(Person, through='MovieCredit')
+
     def __str__(self):
         return f'{self.title} {self.release_date}'
+
 
 class MovieCredit(models.Model):
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
@@ -47,7 +50,7 @@ class MovieCredit(models.Model):
 class MovieReview(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
-    rating = models.PositiveSmallIntegerField(validators=[MinValueValidator(1),
-                                                          MaxValueValidator(100)])
+    rating = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(100)])
     review = models.TextField(blank=True)
-    title  = models.TextField(blank=False, null=False, default="Reseña sin titulo")
+    title = models.TextField(blank=False, null=False, default="Reseña")
+
