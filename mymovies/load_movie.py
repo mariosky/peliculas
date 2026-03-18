@@ -2,7 +2,7 @@ import os
 import environ
 import requests
 import psycopg2
-from  datetime import datetime, date, timezone 
+from datetime import datetime, date, timezone 
 import sys
 
 
@@ -28,7 +28,7 @@ def add_movie(movie_id):
     print(r.json())
     m = r.json()
 
-    conn = psycopg2.connect(dbname='django', host=r'\tmp')
+    conn = psycopg2.connect(dbname='django', host='/tmp')
     cur = conn.cursor()
 
     sql = 'SELECT * FROM movies_movie WHERE title = %s'
